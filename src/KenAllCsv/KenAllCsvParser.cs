@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
 using KenAllCsv.Converters;
@@ -85,7 +86,7 @@ namespace KenAllCsv
         public async IAsyncEnumerable<KenAllAddress> ParseAsync(string path, Encoding encoding)
         {
             using var reader = new StreamReader(path, encoding);
-            await foreach (var record in ReadAsync(reader))
+            await foreach (var record in ReadAsync(reader).ConfigureAwait(false))
             {
                 foreach (var addr in _converter.Convert(record.ToZipCodeAddress()))
                 {
@@ -96,7 +97,7 @@ namespace KenAllCsv
 
         public async IAsyncEnumerable<KenAllAddress> ParseAsync(TextReader reader)
         {
-            await foreach (var record in ReadAsync(reader))
+            await foreach (var record in ReadAsync(reader).ConfigureAwait(false))
             {
                 foreach (var addr in _converter.Convert(record.ToZipCodeAddress()))
                 {
