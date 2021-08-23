@@ -24,5 +24,5 @@ jobs:
     - name: Packaging
       run: dotnet pack --include-symbols --configuration Release --no-build --output nupkgs -p:PackageVersion=${GITHUB_REF/refs\/tags\/v/}
     - name: Nuget Push
-      run: dotnet nuget push nupkgs/*.nupkg -k ${{ secrets.NUGET_API_KEY }}  -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push nupkgs/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
 
