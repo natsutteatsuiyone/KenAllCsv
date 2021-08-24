@@ -22,4 +22,8 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+    - name: Upload coverage report
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r tests/KenAllCsv.Tests/coverage.opencover.xml
