@@ -6,6 +6,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/natsutteatsuiyone/KenAllCsv</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Description>郵便番号CSVファイル(KEN_ALL.CSV) Parser</Description>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
